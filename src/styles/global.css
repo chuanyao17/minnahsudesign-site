@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography System */
+  --font-sans: "Inter", "Noto Sans TC", system-ui, sans-serif;
+
+  /* Luxury Architectural Palette */
+  --color-base: #faf9f6;
+  --color-text-base: #1a1a19;
+  --color-text-muted: #8c857d;
+
+  /* Brand Specific Accents */
+  --color-accent-oak: #a68a64;
+  --color-brand-sage: #a1b0a2;
+  /* 這是根據您 Logo 提取的鼠尾草綠 */
+}
+
+@layer base {
+  body {
+    /* Global Base Application */
+    @apply font-sans bg-base text-text-base antialiased leading-relaxed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* Tighten headings for editorial contrast against relaxed body text */
+    @apply tracking-tight;
+  }
+
+  blockquote {
+    /* 讓 Markdown 中的 > 引言區塊，自動套用優雅的品牌色與邊框 */
+    @apply border-l-4 border-brand-sage pl-6 italic text-brand-sage my-8;
+  }
+}
