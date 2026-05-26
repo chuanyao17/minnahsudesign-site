@@ -1,12 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import AboutConcept from '../components/AboutConcept.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
-import Footer from '../components/Footer.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import AboutConcept from "../components/AboutConcept.astro";
+import ServiceProcess from "../components/ServiceProcess.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import Footer from "../components/Footer.astro";
 
-const projects = await getCollection('projects', ({ data }) => !data.draft);
+const projects = await getCollection("projects", ({ data }) => !data.draft);
 
 const sortedProjects = [...projects].sort((a, b) => {
   const dateA = a.data.publishedAt ? new Date(a.data.publishedAt).getTime() : 0;
@@ -14,11 +15,16 @@ const sortedProjects = [...projects].sort((a, b) => {
   return dateB - dateA;
 });
 ---
-<BaseLayout title="Minna Hsu | Architecture & Interior Design" description="Luxury Editorial Interior Design Website Portfolio">
+
+<BaseLayout
+  title="Minna Hsu | Architecture & Interior Design"
+  description="Luxury Editorial Interior Design Website Portfolio"
+>
   <main>
     <Hero />
     <AboutConcept />
     <ProjectGrid projects={sortedProjects} />
+    <ServiceProcess />
   </main>
   <Footer />
 </BaseLayout>
