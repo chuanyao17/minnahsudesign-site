@@ -1,6 +1,8 @@
 ---
-title: "竹北薛公館"
+title: "薛公館"
 slug: "zhubei-hsueh"
+location: "竹北"
+year: 2025
 description: "保留父親親手打造、承載回憶的書櫃作為空間主角，在簡約美式基調中延續家的故事。"
 draft: false
 publishedAt: 2026-05-25

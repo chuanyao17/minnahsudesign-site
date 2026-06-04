@@ -11,6 +11,8 @@ const projectsCollection = defineCollection({
     publishedAt: z.coerce.date().optional(),
     coverImage: image().optional(),
     gallery: z.array(image()).default([]),
+    location: z.string().optional(),
+    year: z.union([z.string(), z.number()]).optional(),
   }),
 });
 
