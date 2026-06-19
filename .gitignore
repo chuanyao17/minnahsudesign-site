@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # AI Artifacts
 /.artifacts/
+
+# Claude Code preview dev-server config (local tooling)
+/.claude/launch.json
