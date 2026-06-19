@@ -4,14 +4,19 @@ import ProjectCard from './ProjectCard.astro';
 
 interface Props {
   projects: CollectionEntry<'projects'>[];
+  title?: string;
+  eyebrow?: string;
 }
 
-const { projects } = Astro.props;
+const { projects, title = 'Selected Works', eyebrow = 'Portfolio' } = Astro.props;
 ---
-<section class="py-24 md:py-32 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
-  <header class="mb-16 md:mb-24 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
-    <h2 class="text-3xl md:text-4xl font-sans tracking-tight">Selected Works</h2>
-    <span class="text-sm text-text-muted uppercase tracking-widest pb-1">Portfolio</span>
+<section id="works" class="scroll-mt-24 py-24 md:py-32 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
+  <header class="mb-16 md:mb-24">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 pb-6">
+      <h2 class="text-3xl md:text-4xl font-sans tracking-tight font-light">{title}</h2>
+      <span class="brand-label pb-1">{eyebrow}</span>
+    </div>
+    <hr class="brand-rule" />
   </header>
   
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8 md:gap-x-12">

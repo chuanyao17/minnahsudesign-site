@@ -1,38 +1,65 @@
 @import "tailwindcss";
 
 @theme {
-  /* Typography System */
-  --font-sans: "Inter", "Noto Sans TC", system-ui, sans-serif;
+  /* ── Typography System ───────────────────────────── */
+  /* Brand fonts: Gadugi (Latin) + Microsoft JhengHei (Chinese).
+     Both are Windows system fonts — see fallbacks for other platforms. */
+  --font-sans: "Gadugi", "Microsoft JhengHei", "微軟正黑體", system-ui, sans-serif;
 
-  /* Luxury Architectural Palette */
+  /* Wide tracking for the brand's letter-spaced uppercase labels
+     (e.g. "MINNA HSU DESIGN STUDIO", "PROJECT // ZUBEI RESIDENCE") */
+  --tracking-label: 0.22em;
+
+  /* ── Palette ─────────────────────────────────────── */
+  /* Warm paper base + near-black ink for quiet editorial contrast */
   --color-base: #faf9f6;
   --color-text-base: #1a1a19;
   --color-text-muted: #8c857d;
 
-  /* Brand Specific Accents */
+  /* Headings use a warm charcoal — softer than pure ink so they sit
+     within the sage/warm-grey palette instead of shouting in black. */
+  --color-heading: #46413a;
+
+  /* Brand sage — official MH brand color (#ABBAA1).
+     The single accent: logo, thin rules, labels, framing borders. */
+  --color-brand-sage: #abbaa1;
+  --color-brand-sage-ink: #85917e;   /* deeper sage for text on white */
+
+  /* Secondary accent seen in interior photography / collateral */
   --color-accent-oak: #a68a64;
-  --color-brand-sage: #a1b0a2;
-  /* 這是根據您 Logo 提取的鼠尾草綠 */
 }
 
 @layer base {
   body {
-    /* Global Base Application */
     @apply font-sans bg-base text-text-base antialiased leading-relaxed;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    /* Tighten headings for editorial contrast against relaxed body text */
-    @apply tracking-tight;
+  h1, h2, h3, h4, h5, h6 {
+    /* Tighten headings for editorial contrast against relaxed body text.
+       Warm-charcoal color keeps them within the soft palette; components
+       that need a different color (e.g. the white Hero) override locally. */
+    @apply tracking-tight font-light;
+    color: var(--color-heading);
   }
 
   blockquote {
-    /* 讓 Markdown 中的 > 引言區塊，自動套用優雅的品牌色與邊框 */
-    @apply border-l-4 border-brand-sage pl-6 italic text-brand-sage my-8;
+    /* Markdown > blockquotes adopt the brand sage + restrained border */
+    @apply border-l-2 border-brand-sage pl-6 italic text-brand-sage-ink my-8;
+  }
+}
+
+@layer components {
+  /* ── Brand label ─────────────────────────────────────
+     The wide-tracked uppercase sage label used throughout the
+     collateral (eyebrows, footers, section markers). */
+  .brand-label {
+    @apply text-xs font-light uppercase text-brand-sage-ink;
+    letter-spacing: var(--tracking-label);
+  }
+
+  /* ── Hairline rule ───────────────────────────────────
+     The thin sage divider that separates sections / footers. */
+  .brand-rule {
+    @apply border-0 border-t border-brand-sage;
   }
 }

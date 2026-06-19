@@ -1,0 +1,27 @@
+---
+interface Props {
+  /** Show the "Minna Hsu Design Studio" wordmark beside the mark */
+  withName?: boolean;
+  /** Extra classes (sizing / color via currentColor) */
+  class?: string;
+}
+const { withName = false, class: className = "" } = Astro.props;
+---
+<a
+  href="/"
+  class:list={["inline-flex items-center gap-3 text-brand-sage", className]}
+  aria-label="Minna Hsu Design — Home"
+>
+  {/* viewBox cropped to the artwork bounds so the mark sits tight */}
+  <svg
+    viewBox="25.74 80.11 203.12 98.18"
+    class="h-6 w-auto shrink-0"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M228.86,80.11c-24.89,0-45.07,21.89-45.07,48.88c0,27,20.18,48.89,45.07,48.89V80.11z" />
+    <path d="M138.71,80.11c24.9,0,45.08,21.89,45.08,48.88c0,27-20.18,48.89-45.08,48.89V80.11z" />
+    <path d="M120.49,178.29v-0.42v-48.88V80.11c-26.17,0-47.38,21.89-47.38,48.89c0-27-21.21-48.89-47.37-48.89v48.89v48.88v0.42H120.49z" />
+  </svg>
+  {withName && <span class="brand-label whitespace-nowrap">Minna Hsu Design Studio</span>}
+</a>

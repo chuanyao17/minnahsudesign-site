@@ -1,14 +1,78 @@
 ---
+import Logo from "./Logo.astro";
+
+const year = new Date().getFullYear();
 ---
-<footer class="py-24 px-6 md:px-12 lg:px-24 mt-12 md:mt-24">
-  <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-    <div>
-      <span class="text-xl md:text-2xl font-sans tracking-tight block mb-2">Minna Hsu</span>
-      <span class="text-sm text-text-muted block">Architecture & Interior Design</span>
+<footer class="mt-24 md:mt-40">
+  <div class="px-6 md:px-12 lg:px-24">
+    <div class="max-w-[1600px] mx-auto text-center">
+      <!-- Social row -->
+      <div class="flex justify-center gap-8 md:gap-12 mb-16 md:mb-20">
+        <a
+          href="https://www.instagram.com/minna.hsu_design/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="brand-label hover:text-brand-sage transition-colors duration-300"
+        >
+          Instagram
+        </a>
+        <a
+          href="/contact/"
+          class="brand-label hover:text-brand-sage transition-colors duration-300"
+        >
+          Contact
+        </a>
+      </div>
+
+      <!-- Mark -->
+      <Logo class="justify-center mb-8" />
+
+      <!-- Wordmark sign-off -->
+      <h2
+        class="font-sans font-light uppercase leading-tight tracking-[0.08em]
+               text-3xl sm:text-4xl md:text-5xl"
+      >
+        Minna Hsu Design Studio
+      </h2>
+
+      <!-- Baseline -->
+      <p class="mt-16 md:mt-20 text-xs text-text-muted">
+        © {year} Minna Hsu Design Studio &nbsp;·&nbsp; Architecture &amp; Interior Design
+      </p>
     </div>
-    <div class="flex flex-col sm:flex-row gap-6 sm:gap-12 text-sm text-text-muted">
-      <a href="#" class="hover:text-text-base transition-colors duration-300">Instagram</a>
-      <a href="#" class="hover:text-text-base transition-colors duration-300">Contact</a>
-    </div>
+  </div>
+
+  <!-- Brand motif band: scalloped half-discs echo the MH mark (option b) -->
+  <div class="mt-16 text-brand-sage/30" aria-hidden="true">
+    <svg
+      class="w-full h-16 md:h-24 block"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <pattern
+          id="mh-scallop"
+          x="0"
+          y="0"
+          width="56"
+          height="28"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M-28,28 A28,28 0 0 1 28,28 A28,28 0 0 1 84,28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.25"
+          ></path>
+          <path
+            d="M0,0 A28,28 0 0 1 56,0"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.25"
+          ></path>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#mh-scallop)"></rect>
+    </svg>
   </div>
 </footer>
