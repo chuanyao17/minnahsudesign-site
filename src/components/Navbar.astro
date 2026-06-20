@@ -18,18 +18,7 @@ const links = [
   <nav
     class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-6 flex items-center justify-between gap-4"
   >
-    {/* Mobile: hamburger, top-left (first in flow). Hidden on desktop. */}
-    <label
-      for="nav-toggle"
-      class="md:hidden inline-flex flex-col justify-center gap-[6px] w-8 h-8 cursor-pointer"
-      aria-label="Open menu"
-    >
-      <span class="block h-px w-7 bg-brand-sage-ink"></span>
-      <span class="block h-px w-7 bg-brand-sage-ink"></span>
-      <span class="block h-px w-7 bg-brand-sage-ink"></span>
-    </label>
-
-    {/* Logo: sits right of the hamburger on mobile, far-left on desktop */}
+    {/* Logo: far-left on both mobile and desktop */}
     <Logo withName class="hover:text-brand-sage-ink transition-colors duration-300" />
 
     {/* Desktop: inline links */}
@@ -47,16 +36,27 @@ const links = [
         ))
       }
     </ul>
+
+    {/* Mobile: hamburger, top-right (last in flow). Hidden on desktop. */}
+    <label
+      for="nav-toggle"
+      class="md:hidden inline-flex flex-col justify-center gap-[6px] w-8 h-8 cursor-pointer"
+      aria-label="Open menu"
+    >
+      <span class="block h-px w-7 bg-brand-sage-ink"></span>
+      <span class="block h-px w-7 bg-brand-sage-ink"></span>
+      <span class="block h-px w-7 bg-brand-sage-ink"></span>
+    </label>
   </nav>
 
   {/* Mobile full-screen overlay menu — fades in via peer-checked */}
   <div
     class="nav-overlay md:hidden fixed inset-0 z-40 bg-base flex flex-col items-center justify-center gap-10 opacity-0 invisible pointer-events-none transition-opacity duration-500 ease-out peer-checked:opacity-100 peer-checked:visible peer-checked:pointer-events-auto"
   >
-    {/* Close: top-left */}
+    {/* Close: top-right */}
     <label
       for="nav-toggle"
-      class="absolute top-6 left-4 sm:left-6 w-8 h-8 flex items-center justify-center cursor-pointer text-brand-sage-ink"
+      class="absolute top-6 right-4 sm:right-6 w-8 h-8 flex items-center justify-center cursor-pointer text-brand-sage-ink"
       aria-label="Close menu"
     >
       <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25">
