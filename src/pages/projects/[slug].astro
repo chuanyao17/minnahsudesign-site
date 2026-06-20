@@ -50,10 +50,6 @@ const cover = project.data.coverImage;
               <dd class="text-text-base">{new Date(project.data.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</dd>
             </div>
           )}
-          <div>
-            <dt class="mb-2 opacity-60">Status</dt>
-            <dd class="text-text-base">{project.data.draft ? 'Draft' : 'Completed'}</dd>
-          </div>
         </dl>
       </div>
 

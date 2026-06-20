@@ -8,13 +8,28 @@ const links = [
   { label: "Contact", href: "/contact/" },
 ];
 ---
-<header class="w-full bg-base/90 backdrop-blur-sm">
+<header class="relative z-50 bg-base">
+  {/* CSS-only toggle (no JS): drives the mobile overlay via peer-checked */}
+  <input type="checkbox" id="nav-toggle" class="peer sr-only" />
+
   <nav
     class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-6 flex items-center justify-between gap-4"
   >
+    {/* Mobile: hamburger, top-left (first in flow). Hidden on desktop. */}
+    <label
+      for="nav-toggle"
+      class="md:hidden inline-flex flex-col justify-center gap-[6px] w-8 h-8 cursor-pointer"
+      aria-label="Open menu"
+    >
+      <span class="block h-px w-7 bg-brand-sage-ink"></span>
+      <span class="block h-px w-7 bg-brand-sage-ink"></span>
+    </label>
+
+    {/* Logo: sits right of the hamburger on mobile, far-left on desktop */}
     <Logo withName class="hover:text-brand-sage-ink transition-colors duration-300" />
 
-    <ul class="flex items-center gap-4 sm:gap-8 md:gap-12">
+    {/* Desktop: inline links */}
+    <ul class="hidden md:flex items-center gap-8 lg:gap-12">
       {
         links.map((link) => (
           <li>
@@ -29,4 +44,59 @@ const links = [
       }
     </ul>
   </nav>
+
+  {/* Mobile full-screen overlay menu — fades in via peer-checked */}
+  <div
+    class="nav-overlay md:hidden fixed inset-0 z-40 bg-base flex flex-col items-center justify-center gap-10 opacity-0 invisible pointer-events-none transition-opacity duration-500 ease-out peer-checked:opacity-100 peer-checked:visible peer-checked:pointer-events-auto"
+  >
+    {/* Close: top-left */}
+    <label
+      for="nav-toggle"
+      class="absolute top-6 left-4 sm:left-6 w-8 h-8 flex items-center justify-center cursor-pointer text-brand-sage-ink"
+      aria-label="Close menu"
+    >
+      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25">
+        <path d="M5 5 19 19M19 5 5 19"></path>
+      </svg>
+    </label>
+
+    <ul class="flex flex-col items-center gap-10">
+      {
+        links.map((link) => (
+          <li class="menu-link">
+            <a
+              href={link.href}
+              class="text-2xl font-light uppercase tracking-[0.18em] text-heading hover:text-brand-sage transition-colors duration-300"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
+
+<style is:global>
+  /* Staggered reveal of menu links when the overlay opens (pure CSS) */
+  .nav-overlay .menu-link {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+  #nav-toggle:checked ~ .nav-overlay .menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #nav-toggle:checked ~ .nav-overlay .menu-link:nth-child(1) {
+    transition-delay: 0.12s;
+  }
+  #nav-toggle:checked ~ .nav-overlay .menu-link:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  #nav-toggle:checked ~ .nav-overlay .menu-link:nth-child(3) {
+    transition-delay: 0.28s;
+  }
+</style>
