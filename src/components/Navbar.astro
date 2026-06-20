@@ -8,7 +8,10 @@ const links = [
   { label: "Contact", href: "/contact/" },
 ];
 ---
-<header class="relative z-50 bg-base">
+<header
+  data-headroom
+  class="sticky top-0 z-50 bg-base transition-transform duration-300 ease-out"
+>
   {/* CSS-only toggle (no JS): drives the mobile overlay via peer-checked */}
   <input type="checkbox" id="nav-toggle" class="peer sr-only" />
 
@@ -21,6 +24,7 @@ const links = [
       class="md:hidden inline-flex flex-col justify-center gap-[6px] w-8 h-8 cursor-pointer"
       aria-label="Open menu"
     >
+      <span class="block h-px w-7 bg-brand-sage-ink"></span>
       <span class="block h-px w-7 bg-brand-sage-ink"></span>
       <span class="block h-px w-7 bg-brand-sage-ink"></span>
     </label>
@@ -100,3 +104,26 @@ const links = [
     transition-delay: 0.28s;
   }
 </style>
+
+<script>
+  // Headroom: hide the navbar on scroll down, reveal it on scroll up.
+  const header = document.querySelector("[data-headroom]");
+  const toggle = document.getElementById("nav-toggle") as HTMLInputElement | null;
+  let lastY = window.scrollY;
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    // Always visible near the top, and while the mobile menu is open.
+    if (y < 80 || toggle?.checked) {
+      header?.classList.remove("-translate-y-full");
+      lastY = y;
+      return;
+    }
+    if (Math.abs(y - lastY) < 6) return; // ignore tiny scrolls
+    if (y > lastY) header?.classList.add("-translate-y-full"); // down → hide
+    else header?.classList.remove("-translate-y-full"); // up → reveal
+    lastY = y;
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>
