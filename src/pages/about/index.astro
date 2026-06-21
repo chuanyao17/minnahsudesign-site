@@ -50,8 +50,10 @@ const experience = [
 
     <!-- Experience -->
     <section class="pb-24 md:pb-32">
-      <span class="brand-label block mb-6">Experience</span>
-      <hr class="brand-rule mb-12" />
+      <div class="flex items-center gap-5 mb-12">
+        <span class="brand-label text-brand-sage whitespace-nowrap">Experience</span>
+        <hr class="brand-rule flex-1" />
+      </div>
       <dl class="space-y-10">
         {
           experience.map((item) => (
@@ -73,8 +75,10 @@ const experience = [
 
     <!-- Service Process (collapsible, revealed on demand) -->
     <section class="pb-24 md:pb-32">
-      <span class="brand-label block mb-6">Process</span>
-      <hr class="brand-rule mb-12" />
+      <div class="flex items-center gap-5 mb-12">
+        <span class="brand-label text-brand-sage whitespace-nowrap">Process</span>
+        <hr class="brand-rule flex-1" />
+      </div>
       <ServiceProcess />
     </section>
   </main>

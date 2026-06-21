@@ -4,8 +4,10 @@ interface Props {
   withName?: boolean;
   /** Extra classes (sizing / color via currentColor) */
   class?: string;
+  /** Override the mark (svg) size — defaults to the navbar size */
+  markClass?: string;
 }
-const { withName = false, class: className = "" } = Astro.props;
+const { withName = false, class: className = "", markClass = "h-6 w-auto" } = Astro.props;
 ---
 <a
   href="/"
@@ -15,7 +17,7 @@ const { withName = false, class: className = "" } = Astro.props;
   {/* viewBox cropped to the artwork bounds so the mark sits tight */}
   <svg
     viewBox="25.74 80.11 203.12 98.18"
-    class="h-6 w-auto shrink-0"
+    class:list={["shrink-0", markClass]}
     fill="currentColor"
     aria-hidden="true"
   >

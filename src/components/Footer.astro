@@ -1,13 +1,11 @@
 ---
 import Logo from "./Logo.astro";
-
-const year = new Date().getFullYear();
 ---
-<footer class="mt-24 md:mt-40">
+<footer class="mt-24 md:mt-40 pb-20 md:pb-28">
   <div class="px-6 md:px-12 lg:px-24">
     <div class="max-w-[1600px] mx-auto text-center">
-      <!-- Social row -->
-      <div class="flex justify-center gap-8 md:gap-12 mb-16 md:mb-20">
+      <!-- Social -->
+      <div class="flex justify-center mb-14 md:mb-16">
         <a
           href="https://www.instagram.com/minna.hsu_design/"
           target="_blank"
@@ -16,63 +14,18 @@ const year = new Date().getFullYear();
         >
           Instagram
         </a>
-        <a
-          href="/contact/"
-          class="brand-label hover:text-brand-sage transition-colors duration-300"
-        >
-          Contact
-        </a>
       </div>
 
-      <!-- Mark -->
-      <Logo class="justify-center mb-8" />
+      <!-- Mark (sized to harmonise with the wordmark below) -->
+      <Logo class="justify-center mb-6 md:mb-8" markClass="h-10 sm:h-12 md:h-16 w-auto" />
 
-      <!-- Wordmark sign-off -->
+      <!-- Wordmark sign-off (matches the sage mark) -->
       <h2
         class="font-sans font-light uppercase leading-tight tracking-[0.08em]
-               text-3xl sm:text-4xl md:text-5xl"
+               text-3xl sm:text-4xl md:text-5xl text-brand-sage"
       >
         Minna Hsu Design Studio
       </h2>
-
-      <!-- Baseline -->
-      <p class="mt-16 md:mt-20 text-xs text-text-muted">
-        © {year} Minna Hsu Design Studio &nbsp;·&nbsp; Architecture &amp; Interior Design
-      </p>
     </div>
-  </div>
-
-  <!-- Brand motif band: scalloped half-discs echo the MH mark (option b) -->
-  <div class="mt-16 text-brand-sage/30" aria-hidden="true">
-    <svg
-      class="w-full h-16 md:h-24 block"
-      preserveAspectRatio="xMidYMid slice"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <pattern
-          id="mh-scallop"
-          x="0"
-          y="0"
-          width="56"
-          height="28"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M-28,28 A28,28 0 0 1 28,28 A28,28 0 0 1 84,28"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.25"
-          ></path>
-          <path
-            d="M0,0 A28,28 0 0 1 56,0"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.25"
-          ></path>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#mh-scallop)"></rect>
-    </svg>
   </div>
 </footer>

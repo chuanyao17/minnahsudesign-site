@@ -5,20 +5,20 @@ import ProjectCard from './ProjectCard.astro';
 interface Props {
   projects: CollectionEntry<'projects'>[];
   title?: string;
-  eyebrow?: string;
+  /** Show a minimal header: a small sage label + an inline sage hairline */
+  minimal?: boolean;
 }
 
-const { projects, title = 'Selected Works', eyebrow = 'Portfolio' } = Astro.props;
+const { projects, title = 'Selected Works', minimal = false } = Astro.props;
 ---
 <section id="works" class="scroll-mt-24 py-24 md:py-32 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
-  <header class="mb-16 md:mb-24">
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 pb-6">
-      <h2 class="text-3xl md:text-4xl font-sans tracking-tight font-light">{title}</h2>
-      <span class="brand-label pb-1">{eyebrow}</span>
+  {minimal && (
+    <div class="flex items-center gap-5 mb-16 md:mb-24">
+      <span class="brand-label text-brand-sage whitespace-nowrap">{title}</span>
+      <hr class="brand-rule flex-1" />
     </div>
-    <hr class="brand-rule" />
-  </header>
-  
+  )}
+
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8 md:gap-x-12">
     {projects.map(project => (
       <ProjectCard project={project} />
